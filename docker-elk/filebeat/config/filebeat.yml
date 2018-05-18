@@ -7,4 +7,4 @@ filebeat.prospectors:
   processors:
   - add_docker_metadata: ~
 output.logstash:
-  hosts: ["logstash:9200"]
+  hosts: ["logstash:5044"]
