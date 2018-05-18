@@ -14,6 +14,8 @@ services:
       ES_JAVA_OPTS: "-Xmx256m -Xms256m"
     networks:
       - elk
+    labels:
+      app-name: elasticsearch
 
   logstash:
     build:
@@ -30,6 +32,8 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    labels:
+      app-name: logstash
 
   kibana:
     build:
@@ -42,6 +46,8 @@ services:
       - elk
     depends_on:
       - elasticsearch
+    labels:
+      app-name: kibana
   
   filebeat:
     build:
@@ -55,6 +61,9 @@ services:
     user: root
     depends_on:
       - logstash
+    labels:
+      app-name: elasticsearch
+      foobar: snafu
 
 networks:
 
