@@ -61,7 +61,7 @@ services:
     depends_on:
       - logstash
     labels:
-      app-name: elasticsearch
+      app-name: filebeat
       foobar: snafu
 
 networks:
