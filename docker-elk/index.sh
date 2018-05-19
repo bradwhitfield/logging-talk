@@ -13,4 +13,9 @@ curl -XPOST -D- "http://${IP}:5601/api/saved_objects/index-pattern" \
 curl -XPOST -D- "http://${IP}:5601/api/saved_objects/index-pattern" \
     -H 'Content-Type: application/json' \
     -H 'kbn-version: 6.2.3' \
+    -d '{"attributes":{"title":"index_kibana-*","timeFieldName":"@timestamp"}}'
+
+curl -XPOST -D- "http://${IP}:5601/api/saved_objects/index-pattern" \
+    -H 'Content-Type: application/json' \
+    -H 'kbn-version: 6.2.3' \
     -d '{"attributes":{"title":"index_orphan-*","timeFieldName":"@timestamp"}}'
