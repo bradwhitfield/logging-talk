@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  syslog:
+    image: bradwhitfield/rsyslog
+    ports:
+      - 514:514/udp
+    restart: on-failure
+  hello-app:
+    image: ubuntu
+    command: "bash -c 'while true; do echo hello; sleep 5; done'"
+    labels:
+      - app-name=hello-app
+    logging:
+      driver: syslog
+      options:
+        syslog-address: "udp://localhost:514"
+        tag: "hello-app"
+    depends_on:
+      - syslog
+    
