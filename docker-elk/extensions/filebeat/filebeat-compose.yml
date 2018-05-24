@@ -1,0 +1,17 @@
+version: '2'
+ 
+services:
+  filebeat:
+    build:
+      context: extensions/filebeat/
+    volumes:
+      - /var/lib/docker/containers/:/var/lib/docker/containers/
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - elk
+    user: root
+    depends_on:
+      - logstash
+    labels:
+      app-name: filebeat
+      foobar: snafu

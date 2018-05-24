@@ -49,21 +49,6 @@ services:
       - elasticsearch
     labels:
       app-name: kibana
-  
-  filebeat:
-    build:
-      context: filebeat/
-    volumes:
-      - /var/lib/docker/containers/:/var/lib/docker/containers/
-      - /var/run/docker.sock:/var/run/docker.sock
-    networks:
-      - elk
-    user: root
-    depends_on:
-      - logstash
-    labels:
-      app-name: filebeat
-      foobar: snafu
 
 networks:
 
